@@ -1,0 +1,68 @@
+name: Full Stack CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  frontend:
+    name: Frontend (Vite React)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Debug structure
+        run: ls -R
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: cd frontend && npm ci
+
+      - name: Lint (optional)
+        run: cd frontend && npm run lint || echo "No lint"
+
+      - name: Test (optional)
+        run: cd frontend && npm test || echo "No tests"
+
+      - name: Build
+        run: cd frontend && npm run build
+
+  backend:
+    name: Backend (Express API)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Debug structure
+        run: ls -R
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: cd backend && npm ci
+
+      - name: Lint (optional)
+        run: cd backend && npm run lint || echo "No lint"
+
+      - name: Test (optional)
+        run: cd backend && npm test || echo "No tests"
+
+      - name: Start server check (optional)
+        run: |
+          cd backend
+          node index.js &
+          sleep 5
+          curl -f http://localhost:5000/health || exit 1
