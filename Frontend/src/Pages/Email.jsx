@@ -1,14 +1,17 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5000/generate-email";
 
 export default function EmailGeneratorUI({ onBack }) {
+  const navigate = useNavigate();
   const [summary, setSummary] = useState("");
   const [theme, setTheme] = useState("");
   const [form, setForm] = useState({
     tone: "Professional",
     words: "100",
     paragraphs: "2",
+    campaign: "",
     emojis: false,
     personalization: true,
     audience: [],
@@ -81,14 +84,21 @@ export default function EmailGeneratorUI({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start px-4 py-10">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start mt-10 px-4 py-10">
       {/* ── Form Card ── */}
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-md p-6 sm:p-10">
 
         {/* Back Button */}
-        {onBack && (
+        {onBack ? (
           <button
             onClick={onBack}
+            className="mb-6 flex items-center gap-2 text-purple-600 hover:text-purple-700 transition"
+          >
+            ← Back
+          </button>
+        ) : (
+          <button
+            onClick={() => navigate("/")}
             className="mb-6 flex items-center gap-2 text-purple-600 hover:text-purple-700 transition"
           >
             ← Back
@@ -109,9 +119,8 @@ export default function EmailGeneratorUI({ onBack }) {
             className="w-full h-40 p-4 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
           />
           <span
-            className={`absolute bottom-3 right-4 text-xs transition-colors ${
-              summary.length >= 30 ? "text-green-500 font-medium" : "text-gray-400"
-            }`}
+            className={`absolute bottom-3 right-4 text-xs transition-colors ${summary.length >= 30 ? "text-green-500 font-medium" : "text-gray-400"
+              }`}
           >
             {summary.length < 30
               ? `Minimum 30 characters (${30 - summary.length} remaining)`
@@ -178,11 +187,10 @@ export default function EmailGeneratorUI({ onBack }) {
               <button
                 key={item}
                 onClick={() => toggleAudience(item)}
-                className={`px-4 py-2 rounded-full border text-sm transition ${
-                  form.audience.includes(item)
+                className={`px-4 py-2 rounded-full border text-sm transition ${form.audience.includes(item)
                     ? "bg-purple-600 text-white border-purple-600"
                     : "bg-gray-100 text-gray-700 hover:border-purple-400"
-                }`}
+                  }`}
               >
                 {item}
               </button>
