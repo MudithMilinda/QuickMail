@@ -32,7 +32,7 @@ export default function Footer() {
                 />
               </svg>
               <span className="font-extrabold text-lg text-[#1a1a2e]">
-                QUICKMAILs
+                QUICKMAILss
               </span>
             </div>
 
