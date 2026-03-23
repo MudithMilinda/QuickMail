@@ -5,35 +5,20 @@ on:
     paths:
       - "frontend/**"
     branches: [main]
-  
+  workflow_dispatch: 
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: frontend
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - name: Debug
+        run: ls -R
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install
+        run: cd frontend && npm ci
 
-      - name: Run lint (optional)
-        run: npm run lint || echo "No lint configured"
-
-      - name: Run tests (optional)
-        run: npm test || echo "No tests configured"
-
-      - name: Build project
-        run: npm run build
-
-      
+      - name: Build
+        run: cd frontend && npm run build
