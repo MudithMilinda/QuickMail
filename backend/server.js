@@ -149,7 +149,7 @@ Generate the email according to ALL system rules. Do not ignore constraints.`;
   } catch (err) {
     console.error("OpenAI Error:", err.message);
     return res.status(500).json({
-      error: "Failed to generate email. Please try again.",
+      error: "Failed to generate email. Please try again Thank you.",
       details: err.message,
     });
   }
