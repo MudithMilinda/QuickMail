@@ -31,15 +31,3 @@
 4. If input is in Sinhala, AI converts it into English and generates the email.  
 
 ---
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js v16+  
-- OpenAI API Key  
-
-### Installation
-```bash
-git clone https://github.com/your-username/smart-email-writer.git
-cd smart-email-writer
-npm install
