@@ -6,7 +6,7 @@ import EmailGeneratorUI from "./Components/Email";
 
 // Mock Data
 const FEATURES = [
-  { icon: "📧", title: "Fast Emails", desc: "Generate emails in seconds with AI." },
+  { icon: "📧", title: "Fast Emailss", desc: "Generate emails in seconds with AI." },
   { icon: "⚡", title: "High Converting", desc: "Optimized for engagement and clicks." },
   { icon: "🎯", title: "Tailored", desc: "Personalized content for your audience." },
   { icon: "🔒", title: "Secure", desc: "Your data stays safe and private." },
