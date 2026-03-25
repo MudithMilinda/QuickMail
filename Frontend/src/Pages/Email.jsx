@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:5000/generate-email";
+const API_URL = "https://quickmail-pzkt.onrender.com/generate-email";
 
 export default function EmailGeneratorUI({ onBack }) {
   const navigate = useNavigate();
