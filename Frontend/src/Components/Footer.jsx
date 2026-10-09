@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
+
+// Rename each <motion.div> and </motion.div> in this component to <Motion.div> and </Motion.div>.
 
 export default function Footer() {
   return (
