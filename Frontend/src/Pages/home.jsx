@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+void motion;
 
 // Explicitly mark the JSX-used import as used for no-unused-vars.
 import { useNavigate } from "react-router-dom";
